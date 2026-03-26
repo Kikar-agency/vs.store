@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VS Glamour — Victoria's Secret Argentina</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --rose:#C4A0A0;--rose-light:#F5EAEA;--rose-pale:#FAF4F4;--blush:#E8C8C8;
+  --mauve:#8A5F5F;--dark:#1E1212;--text:#3D2B2B;--muted:#8A7070;
+  --cream:#FFF8F5;--gold:#C9A96E;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* ── TICKER ── */
+.ticker{background:var(--dark);color:var(--cream);height:36px;overflow:hidden;display:flex;align-items:center;position:relative;z-index:101}
+.ticker-track{display:flex;white-space:nowrap;animation:ticker 34s linear infinite}
+.ticker-track span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:0 2.5rem;opacity:.85}
+.ticker-track span b{color:#E8B8B8;font-weight:500}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{position:fixed;top:36px;left:0;right:0;z-index:100;background:rgba(255,248,245,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,160,160,.18);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:62px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;letter-spacing:.18em;color:var(--dark);text-decoration:none}
+.nav-logo span{color:var(--rose)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--dark)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.cart-btn{background:var(--dark);color:var(--cream);border:none;cursor:pointer;padding:.5rem 1.2rem;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;display:flex;align-items:center;gap:.5rem;transition:background .3s}
+.cart-btn:hover{background:var(--mauve)}
+.cart-count{background:var(--rose);color:#fff;border-radius:50%;width:18px;height:18px;font-size:.65rem;display:flex;align-items:center;justify-content:center;font-weight:500}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:98px;position:relative;overflow:hidden;background:linear-gradient(140deg,#FFF2EF 0%,#FAF0F0 45%,#F2E6E6 100%)}
+.hero-deco{position:absolute;inset:0;pointer-events:none}
+.deco-c{position:absolute;border-radius:50%}
+.deco-c.a{width:700px;height:700px;background:radial-gradient(circle,rgba(200,160,160,.12) 0%,transparent 70%);top:-200px;right:-150px}
+.deco-c.b{width:450px;height:450px;background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);bottom:-120px;left:-100px}
+.deco-c.c{width:200px;height:200px;border:1px solid rgba(200,160,160,.12);top:30%;left:5%}
+.hero-inner{max-width:1120px;margin:0 auto;padding:3rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-eyebrow{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rose);margin-bottom:1.25rem}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,5rem);font-weight:300;line-height:1.07;color:var(--dark);margin-bottom:1.25rem}
+.hero-title em{font-style:italic;color:var(--mauve)}
+.hero-desc{font-size:.9rem;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:2rem;max-width:400px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.25rem}
+.hero-badge{background:white;border:1px solid rgba(200,160,160,.3);padding:.35rem .9rem;font-size:.72rem;letter-spacing:.06em;color:var(--muted);border-radius:2px}
+.hero-badge b{color:var(--mauve);font-weight:500}
+.hero-cta{display:inline-block;background:var(--dark);color:var(--cream);padding:.95rem 2.4rem;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;transition:background .3s;font-family:'Jost',sans-serif}
+.hero-cta:hover{background:var(--mauve)}
+.hero-img-side{display:flex;justify-content:center;align-items:center;position:relative}
+.hero-img-wrap{position:relative;animation:floatImg 7s ease-in-out infinite;filter:drop-shadow(0 32px 64px rgba(160,110,110,.22))}
+@keyframes floatImg{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-16px) rotate(.5deg)}}
+.hero-img-wrap img{width:100%;max-width:360px;border-radius:8px;display:block}
+.hero-img-ring{position:absolute;border-radius:50%;border:1px solid rgba(200,160,160,.18);animation:ringPulse 5s ease-in-out infinite}
+.hero-img-ring.r1{width:320px;height:320px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.hero-img-ring.r2{width:420px;height:420px;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:1.2s}
+@keyframes ringPulse{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:.2;transform:translate(-50%,-50%) scale(1.04)}}
+
+/* ── BENEFITS BAR ── */
+.benefits-bar{background:white;border-top:1px solid rgba(200,160,160,.15);border-bottom:1px solid rgba(200,160,160,.15);padding:1.75rem 0}
+.benefits-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);padding:0 2rem}
+.benefit{display:flex;align-items:center;gap:1rem;padding:0 2rem}
+.benefit+.benefit{border-left:1px solid rgba(200,160,160,.2)}
+.benefit-icon{font-size:1.5rem;flex-shrink:0}
+.benefit-text strong{display:block;font-size:.83rem;font-weight:500;color:var(--dark);margin-bottom:.15rem}
+.benefit-text span{font-size:.75rem;color:var(--muted);font-weight:300}
+
+/* ── SECTION COMMONS ── */
+section{padding:5.5rem 1.5rem}
+.section-eyebrow{text-align:center;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:.6rem}
+.section-title{text-align:center;font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:300;color:var(--dark)}
+.section-line{width:50px;height:1px;background:var(--rose);margin:1rem auto 3rem}
+
+/* ── CATEGORY TABS ── */
+.cat-tabs{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-bottom:3rem}
+.cat-tab{background:white;border:1px solid rgba(200,160,160,.3);padding:.45rem 1.3rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-radius:2px;cursor:pointer;transition:all .2s;font-family:'Jost',sans-serif}
+.cat-tab.active{background:var(--dark);color:var(--cream);border-color:var(--dark)}
+.cat-tab:hover:not(.active){border-color:var(--rose);color:var(--mauve)}
+
+/* ── PRODUCTS GRID ── */
+.products-section{background:var(--white)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.75rem;max-width:1120px;margin:0 auto}
+.product-card{background:white;border:1px solid rgba(200,160,160,.18);border-radius:4px;overflow:hidden;transition:transform .4s cubic-bezier(.2,0,.2,1),box-shadow .4s;cursor:pointer}
+.product-card:hover{transform:translateY(-7px);box-shadow:0 28px 64px rgba(170,120,120,.14)}
+.product-card[style*="display:none"]{display:none!important}
+.product-img{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--rose-pale);display:flex;align-items:center;justify-content:center}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.product-card:hover .product-img img{transform:scale(1.06)}
+.p-placeholder{display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.45}
+.p-placeholder span{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+.product-tag{position:absolute;top:10px;left:10px;background:var(--dark);color:var(--cream);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .65rem;border-radius:2px}
+.product-tag.hot{background:var(--mauve)}
+.product-body{padding:1.15rem 1.3rem}
+.product-cat{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:.3rem}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--dark);margin-bottom:.3rem;line-height:1.3}
+.product-desc{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.65;margin-bottom:.95rem}
+.product-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:.5rem}
+.product-price small{font-size:.6rem;color:var(--muted);display:block;margin-bottom:.1rem}
+.price-main{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--dark);line-height:1}
+.price-transfer{font-size:.75rem;color:var(--mauve);font-weight:500;margin-top:.2rem}
+.add-btn{width:36px;height:36px;border-radius:50%;background:var(--rose-pale);border:1px solid var(--blush);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--mauve);transition:all .3s;flex-shrink:0}
+.add-btn:hover{background:var(--dark);color:var(--cream);border-color:var(--dark)}
+.color-dots{display:flex;gap:.3rem;margin-bottom:.6rem}
+.color-dot{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.08)}
+
+/* ── PRODUCT MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(20,10,10,.6);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--cream);border-radius:6px;max-width:900px;width:100%;max-height:90vh;overflow-y:auto;transform:translateY(20px);transition:transform .3s;display:grid;grid-template-columns:1fr 1fr}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-gallery{position:relative;background:var(--rose-pale)}
+.modal-main-img{aspect-ratio:3/4;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.modal-main-img img{width:100%;height:100%;object-fit:cover}
+.modal-thumbs{display:flex;gap:.5rem;padding:.75rem;overflow-x:auto}
+.modal-thumb{width:60px;height:72px;flex-shrink:0;border-radius:2px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s}
+.modal-thumb.active{border-color:var(--rose)}
+.modal-thumb img{width:100%;height:100%;object-fit:cover}
+.modal-info{padding:2rem 2rem 2rem;display:flex;flex-direction:column}
+.modal-close{position:absolute;top:1rem;right:1rem;background:white;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1.2rem;color:var(--muted);display:flex;align-items:center;justify-content:center;z-index:10;transition:all .2s}
+.modal-close:hover{background:var(--dark);color:white}
+.modal-cat{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-bottom:.4rem}
+.modal-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--dark);margin-bottom:.5rem;line-height:1.2}
+.modal-desc{font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem;font-weight:300}
+.modal-price-block{margin-bottom:1.5rem}
+.modal-price-block .mp-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
+.modal-price-block .mp-main{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--dark)}
+.modal-price-block .mp-transfer{font-size:.85rem;color:var(--mauve);font-weight:500;margin-top:.2rem}
+.modal-price-block .mp-cuotas{font-size:.78rem;color:var(--muted);margin-top:.15rem}
+.selector-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.6rem}
+.color-selector{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.color-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .2s;position:relative}
+.color-swatch.active{border-color:var(--dark);transform:scale(1.15)}
+.color-swatch:hover{transform:scale(1.1)}
+.size-selector{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.size-btn{padding:.4rem .9rem;border:1px solid rgba(200,160,160,.35);background:white;border-radius:2px;font-size:.78rem;font-family:'Jost',sans-serif;cursor:pointer;color:var(--muted);transition:all .2s}
+.size-btn.active{background:var(--dark);color:var(--cream);border-color:var(--dark)}
+.size-btn:hover:not(.active){border-color:var(--rose);color:var(--mauve)}
+.modal-add-btn{width:100%;background:var(--dark);color:var(--cream);border:none;padding:1rem;font-family:'Jost',sans-serif;font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .3s;margin-bottom:1rem}
+.modal-add-btn:hover{background:var(--mauve)}
+.modal-related{margin-top:1.5rem;border-top:1px solid rgba(200,160,160,.2);padding-top:1.25rem}
+.modal-related-title{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.related-card{cursor:pointer;border-radius:2px;overflow:hidden;border:1px solid rgba(200,160,160,.2);transition:all .2s}
+.related-card:hover{border-color:var(--rose)}
+.related-card-img{aspect-ratio:3/4;background:var(--rose-pale);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.related-card-img img{width:100%;height:100%;object-fit:cover}
+.related-card-name{font-size:.7rem;color:var(--dark);padding:.3rem .4rem;font-family:'Cormorant Garamond',serif;line-height:1.2}
+
+/* ── VS vs CONVENCIONAL ── */
+.compare-section{background:var(--dark);color:var(--cream);padding:5.5rem 2rem;position:relative;overflow:hidden}
+.compare-section .section-eyebrow{color:var(--rose)}
+.compare-section .section-title{color:var(--cream)}
+.compare-section .section-line{background:var(--rose)}
+.compare-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:start}
+.compare-col{padding:0 2rem}
+.compare-col.vs-col{text-align:center}
+.compare-col-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.compare-col.vs-col .compare-col-title{color:var(--rose)}
+.compare-divider{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:3.5rem;gap:1rem}
+.compare-vs{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-style:italic;color:var(--rose);opacity:.6}
+.compare-line-v{width:1px;height:200px;background:rgba(255,255,255,.08)}
+.compare-item{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1.1rem}
+.compare-item .ci-icon{font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.compare-item .ci-text{font-size:.82rem;font-weight:300;line-height:1.6;opacity:.8}
+.compare-item .ci-text b{font-weight:500;opacity:1;color:var(--cream)}
+.compare-col.vs-col .compare-item .ci-text b{color:#E8B8B8}
+
+/* ── ABOUT VS ── */
+.about-section{background:var(--rose-pale);padding:5.5rem 2rem}
+.about-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text .section-eyebrow,.about-text .section-title{text-align:left}
+.about-text .section-line{margin-left:0}
+.about-text p{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.9;margin-bottom:1rem}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.about-stat{background:white;border:1px solid rgba(200,160,160,.22);border-radius:4px;padding:1.25rem;text-align:center}
+.about-stat .as-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--mauve);display:block}
+.about-stat .as-label{font-size:.72rem;color:var(--muted);letter-spacing:.06em;margin-top:.2rem}
+.about-img-side{position:relative}
+.about-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.about-img-item{border-radius:4px;overflow:hidden;background:var(--blush);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center}
+.about-img-item img{width:100%;height:100%;object-fit:cover}
+.about-img-item:first-child{margin-top:2rem}
+.about-img-item:last-child{margin-top:-2rem}
+
+/* ── FEATURE BANNER ── */
+.feature-banner{background:var(--dark);color:var(--cream);padding:5rem 2.5rem;position:relative;overflow:hidden}
+.fb-deco{position:absolute;inset:0;pointer-events:none}
+.fb-deco::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(200,160,160,.06);top:-250px;right:-150px}
+.fb-deco::after{content:'';position:absolute;width:350px;height:350px;border-radius:50%;border:1px solid rgba(200,160,160,.04);bottom:-120px;left:-80px}
+.fb-inner{max-width:1020px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.fb-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+.fb-left h2 em{font-style:italic;color:var(--rose)}
+.fb-left p{font-size:.85rem;font-weight:300;line-height:1.9;opacity:.65}
+.fb-cards{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fb-card{background:rgba(255,255,255,.05);border:1px solid rgba(200,160,160,.12);border-radius:4px;padding:1.3rem;text-align:center}
+.fb-card .fbc-icon{font-size:1.5rem;margin-bottom:.6rem}
+.fb-card .fbc-title{font-size:.82rem;letter-spacing:.04em;color:var(--cream);margin-bottom:.25rem;font-weight:400}
+.fb-card .fbc-sub{font-size:.7rem;opacity:.45}
+
+/* ── TRUST ── */
+.trust-strip{background:white;padding:4rem 1.5rem;border-top:1px solid rgba(200,160,160,.18)}
+.trust-inner{max-width:880px;margin:0 auto;text-align:center}
+.trust-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.5rem);font-weight:300;color:var(--dark);margin-bottom:.6rem}
+.trust-inner p{font-size:.85rem;color:var(--muted);font-weight:300;line-height:1.8;max-width:500px;margin:0 auto 2rem}
+.trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.85rem}
+.trust-pill{background:var(--rose-pale);border:1px solid rgba(200,160,160,.28);border-radius:30px;padding:.5rem 1.2rem;font-size:.78rem;color:var(--text);display:flex;align-items:center;gap:.45rem}
+
+/* ── CART OVERLAY ── */
+.cart-overlay{position:fixed;inset:0;background:rgba(20,10,10,.55);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-sidebar{position:fixed;right:0;top:0;bottom:0;width:min(430px,100vw);background:var(--cream);z-index:201;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.cart-sidebar.open{transform:translateX(0)}
+.cart-header{padding:1.5rem 1.75rem;border-bottom:1px solid rgba(200,160,160,.2);display:flex;align-items:center;justify-content:space-between}
+.cart-header h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300}
+.close-btn{background:none;border:none;font-size:1.7rem;cursor:pointer;color:var(--muted);line-height:1;padding:.2rem}
+.cart-items{flex:1;overflow-y:auto;padding:1.5rem 1.75rem}
+.cart-empty{text-align:center;padding:3rem 0;color:var(--muted)}
+.cart-empty p:first-child{font-size:.9rem;margin-bottom:.4rem}
+.cart-empty p:last-child{font-size:.78rem;opacity:.6}
+.cart-item{display:flex;gap:.85rem;padding:.9rem 0;border-bottom:1px solid rgba(200,160,160,.12);align-items:flex-start}
+.citem-thumb{width:60px;height:72px;background:var(--rose-pale);border-radius:2px;flex-shrink:0;overflow:hidden}
+.citem-thumb img{width:100%;height:100%;object-fit:cover}
+.citem-info{flex:1;min-width:0}
+.citem-name{font-family:'Cormorant Garamond',serif;font-size:.98rem;color:var(--dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.citem-cat{font-size:.6rem;color:var(--rose);letter-spacing:.1em;text-transform:uppercase;margin:.1rem 0 .2rem}
+.citem-variant{font-size:.7rem;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
+.citem-color-dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.1);flex-shrink:0}
+.qty-row{display:flex;align-items:center;gap:.4rem}
+.qty-btn{background:var(--rose-pale);border:1px solid var(--blush);width:24px;height:24px;border-radius:2px;cursor:pointer;font-size:.9rem;color:var(--mauve);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.qty-btn:hover{background:var(--mauve);color:white;border-color:var(--mauve)}
+.citem-price{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--dark);white-space:nowrap}
+.remove-item{background:none;border:none;cursor:pointer;color:var(--rose);font-size:1rem;padding:.2rem;transition:color .2s}
+.remove-item:hover{color:var(--mauve)}
+.cart-footer{padding:1.25rem 1.75rem;border-top:1px solid rgba(200,160,160,.2)}
+.pay-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.5rem}
+.pay-opts{display:flex;gap:.5rem;margin-bottom:.85rem}
+.pay-opt{flex:1;padding:.55rem;border:1px solid rgba(200,160,160,.3);background:white;border-radius:2px;cursor:pointer;font-size:.74rem;font-family:'Jost',sans-serif;color:var(--muted);text-align:center;transition:all .2s}
+.pay-opt.active{border-color:var(--mauve);background:var(--rose-pale);color:var(--mauve)}
+.cuotas-row{display:flex;gap:.4rem;margin-bottom:.85rem}
+.cuota-opt{flex:1;padding:.45rem .3rem;border:1px solid rgba(200,160,160,.3);background:white;border-radius:2px;cursor:pointer;font-size:.72rem;font-family:'Jost',sans-serif;color:var(--muted);text-align:center;transition:all .2s}
+.cuota-opt small{display:block;font-size:.6rem;color:var(--rose);margin-top:.15rem}
+.cuota-opt.active{border-color:var(--rose);background:var(--rose-pale);color:var(--mauve)}
+.cart-totals{margin-bottom:.9rem}
+.cart-row{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:.4rem;align-items:center}
+.cart-row.total{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--dark);margin-top:.65rem;padding-top:.65rem;border-top:1px solid rgba(200,160,160,.2)}
+.cart-row.disc{color:var(--mauve);font-weight:500;font-size:.78rem}
+.ship-notice{background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.28);border-radius:2px;padding:.65rem .9rem;font-size:.75rem;color:var(--muted);margin-bottom:.9rem;line-height:1.6}
+.ship-notice b{color:var(--gold)}
+.checkout-btn{width:100%;background:var(--dark);color:var(--cream);border:none;padding:.95rem;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .3s;display:flex;align-items:center;justify-content:center;gap:.7rem}
+.checkout-btn:hover{background:var(--mauve)}
+.checkout-btn svg{width:17px;height:17px;flex-shrink:0}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,248,245,.5);padding:3.5rem 1.5rem;text-align:center}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:300;color:var(--cream);letter-spacing:.18em;margin-bottom:.75rem}
+footer p{font-size:.78rem;line-height:2.1}
+
+/* ── ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.vis{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:820px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem;text-align:center}
+  .hero-img-side{order:-1}
+  .hero-img-wrap img{max-width:240px}
+  .hero-badges{justify-content:center}
+  .hero-desc{margin:0 auto 2rem}
+  .benefits-grid{grid-template-columns:1fr;gap:0}
+  .benefit{padding:1rem 1.5rem}
+  .benefit+.benefit{border-left:none;border-top:1px solid rgba(200,160,160,.18)}
+  .fb-inner{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr}
+  .about-img-side{display:none}
+  .compare-grid{grid-template-columns:1fr;gap:2rem}
+  .compare-divider{flex-direction:row;padding-top:0}
+  .compare-line-v{width:60px;height:1px}
+  nav{padding:0 1rem}
+  .nav-links{display:none}
+  .modal-box{grid-template-columns:1fr}
+  .related-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:520px){
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:.85rem}
+  .product-body{padding:.9rem}
+  .product-name{font-size:1rem}
+  section{padding:3.5rem 1rem}
+  .hero-title{font-size:2.6rem}
+  .fb-cards{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">VS <span>Glamour</span></a>
+  <div class="nav-links">
+    <a href="#fragancias">Fragancias</a>
+    <a href="#ropa">Ropa Interior</a>
+    <a href="#nosotros">Nosotros</a>
+  </div>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart()">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Carrito <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco"><div class="deco-c a"></div><div class="deco-c b"></div><div class="deco-c c"></div></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Victoria's Secret · Original Importado</p>
+      <h1 class="hero-title">El aroma<br>que <em>te define</em></h1>
+      <p class="hero-desc">Body mists, cremas y ropa interior originales de Victoria's Secret. Fragancias y estilo enviados a toda Argentina.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">3 cuotas <b>sin interés</b></span>
+        <span class="hero-badge"><b>20% OFF</b> transferencia</span>
+        <span class="hero-badge">📦 Envío a todo el país</span>
+        <span class="hero-badge">✨ <b>100% originales</b></span>
+      </div>
+      <button class="hero-cta" onclick="document.getElementById('fragancias').scrollIntoView({behavior:'smooth'})">Ver colección</button>
+    </div>
+    <div class="hero-img-side">
+      <div class="hero-img-wrap">
+        <div class="hero-img-ring r1"></div>
+        <div class="hero-img-ring r2"></div>
+        <img src="img/hero-velvet-petals.jpg" alt="Victoria's Secret"
+          onerror="this.outerHTML='<svg width=\'300\' height=\'420\' viewBox=\'0 0 300 420\' fill=\'none\'><rect x=\'110\' y=\'12\' width=\'80\' height=\'26\' rx=\'8\' fill=\'#C8A0A0\' opacity=\'.5\'/><rect x=\'122\' y=\'4\' width=\'56\' height=\'16\' rx=\'6\' fill=\'#9A6B6B\' opacity=\'.7\'/><path d=\'M45 115 C45 95 85 83 150 83 C215 83 255 95 255 115 L265 385 C265 405 215 415 150 415 C85 415 35 405 35 385 Z\' fill=\'url(#hg)\'/><ellipse cx=\'150\' cy=\'115\' rx=\'105\' ry=\'28\' fill=\'#E8C8C8\' opacity=\'.4\'/><rect x=\'82\' y=\'200\' width=\'136\' height=\'80\' rx=\'4\' fill=\'rgba(255,255,255,.2)\'/><text x=\'150\' y=\'228\' text-anchor=\'middle\' font-family=\'Georgia,serif\' font-size=\'13\' fill=\'rgba(42,26,26,.6)\'>VICTORIA\'S</text><text x=\'150\' y=\'245\' text-anchor=\'middle\' font-family=\'Georgia,serif\' font-size=\'12\' fill=\'rgba(42,26,26,.4)\'>SECRET</text><text x=\'150\' y=\'268\' text-anchor=\'middle\' font-family=\'Georgia,serif\' font-size=\'16\' fill=\'rgba(42,26,26,.55)\' font-style=\'italic\'>Velvet Petals</text><defs><linearGradient id=\'hg\' x1=\'35\' y1=\'83\' x2=\'265\' y2=\'415\' gradientUnits=\'userSpaceOnUse\'><stop offset=\'0%\' stop-color=\'#EDD0D0\'/><stop offset=\'100%\' stop-color=\'#9A6B6B\'/></linearGradient></defs></svg>'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS BAR -->
+<div class="benefits-bar">
+  <div class="benefits-grid">
+    <div class="benefit fade-up"><span class="benefit-icon">💳</span><div class="benefit-text"><strong>3 Cuotas sin interés</strong><span>Con todas las tarjetas de crédito</span></div></div>
+    <div class="benefit fade-up" style="transition-delay:.1s"><span class="benefit-icon">🏦</span><div class="benefit-text"><strong>20% OFF por transferencia</strong><span>Descuento automático al pagar por transferencia</span></div></div>
+    <div class="benefit fade-up" style="transition-delay:.2s"><span class="benefit-icon">📦</span><div class="benefit-text"><strong>Envío a toda Argentina</strong><span>Cotización personalizada por WhatsApp</span></div></div>
+  </div>
+</div>
+
+<!-- FRAGANCIAS -->
+<section id="fragancias" class="products-section">
+  <p class="section-eyebrow fade-up">Colección</p>
+  <h2 class="section-title fade-up">Body Mists & Cremas</h2>
+  <div class="section-line"></div>
+  <div class="cat-tabs" id="fragTabs">
+    <button class="cat-tab active" onclick="filterCat('fragancias','all',this)">Todo</button>
+    <button class="cat-tab" onclick="filterCat('fragancias','Body Mist',this)">Body Mists</button>
+    <button class="cat-tab" onclick="filterCat('fragancias','Crema Corporal',this)">Cremas</button>
+  </div>
+  <div class="products-grid" id="fragGrid"></div>
+</section>
+
+<!-- VS vs CONVENCIONAL -->
+<section class="compare-section">
+  <p class="section-eyebrow fade-up">¿Por qué elegir VS?</p>
+  <h2 class="section-title fade-up">VS frente a perfumes <em style="font-style:italic">convencionales</em></h2>
+  <div class="section-line"></div>
+  <div class="compare-grid">
+    <div class="compare-col">
+      <div class="compare-col-title">Perfumes convencionales</div>
+      <div class="compare-item"><span class="ci-icon">❌</span><div class="ci-text"><b>Duración forzada</b> — altísima concentración de alcohol que puede irritar la piel sensible</div></div>
+      <div class="compare-item"><span class="ci-icon">❌</span><div class="ci-text"><b>Un solo uso</b> — para el cuello o la ropa, no apto para todo el cuerpo</div></div>
+      <div class="compare-item"><span class="ci-icon">❌</span><div class="ci-text"><b>Precios inaccesibles</b> — fragancias de diseñador con costo de entrada muy alto</div></div>
+      <div class="compare-item"><span class="ci-icon">❌</span><div class="ci-text"><b>Frasco pesado</b> — difícil de llevar en cartera o bolso de viaje</div></div>
+    </div>
+    <div class="compare-divider">
+      <div class="compare-line-v"></div>
+      <div class="compare-vs">vs</div>
+      <div class="compare-line-v"></div>
+    </div>
+    <div class="compare-col vs-col">
+      <div class="compare-col-title">Victoria's Secret Body Mist</div>
+      <div class="compare-item"><span class="ci-icon">✅</span><div class="ci-text"><b>Fórmula suave</b> — baja concentración de alcohol, apta para piel sensible y aplicación diaria</div></div>
+      <div class="compare-item"><span class="ci-icon">✅</span><div class="ci-text"><b>Todo el cuerpo</b> — diseñado para aplicar después del baño, hidrata y perfuma a la vez</div></div>
+      <div class="compare-item"><span class="ci-icon">✅</span><div class="ci-text"><b>Precio accesible</b> — fragancia de marca premium a un valor que podés renovar cada temporada</div></div>
+      <div class="compare-item"><span class="ci-icon">✅</span><div class="ci-text"><b>250ml portátil</b> — frasco ligero que cabe en cualquier bolso, ideal para retocar todo el día</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROPA INTERIOR -->
+<section id="ropa" class="products-section" style="background:var(--rose-pale)">
+  <p class="section-eyebrow fade-up">Nueva colección</p>
+  <h2 class="section-title fade-up">Ropa Interior</h2>
+  <div class="section-line"></div>
+  <div class="cat-tabs" id="ropaTabs">
+    <button class="cat-tab active" onclick="filterCat('ropa','all',this)">Todo</button>
+    <button class="cat-tab" onclick="filterCat('ropa','Bombacha',this)">Bombachas & Tangas</button>
+    <button class="cat-tab" onclick="filterCat('ropa','Corpiño',this)">Corpiños & Bralettes</button>
+  </div>
+  <div class="products-grid" id="ropaGrid"></div>
+</section>
+
+<!-- ABOUT VS -->
+<section id="nosotros" class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <p class="section-eyebrow fade-up">La marca</p>
+      <h2 class="section-title fade-up">¿Qué es<br>Victoria's Secret?</h2>
+      <div class="section-line"></div>
+      <p class="fade-up">Victoria's Secret es la marca de lencería y fragancias más icónica del mundo, fundada en 1977 en Columbus, Ohio. Sinónimo de feminidad, sensualidad y glamour, sus productos son reconocidos globalmente por su calidad y sus fragancias inconfundibles.</p>
+      <p class="fade-up">Sus body mists y cremas son un ritual de belleza en millones de hogares: fórmulas suaves con ingredientes de primera que cuidan la piel mientras la perfuman todo el día.</p>
+      <p class="fade-up">En VS Glamour te traemos productos <strong>100% originales e importados</strong>, seleccionados directamente de la línea oficial, con envío a toda Argentina.</p>
+      <div class="about-stats fade-up">
+        <div class="about-stat"><span class="as-num">+40</span><span class="as-label">años de historia</span></div>
+        <div class="about-stat"><span class="as-num">100%</span><span class="as-label">productos originales</span></div>
+        <div class="about-stat"><span class="as-num">+50</span><span class="as-label">fragancias icónicas</span></div>
+        <div class="about-stat"><span class="as-num">🇦🇷</span><span class="as-label">envío a todo el país</span></div>
+      </div>
+    </div>
+    <div class="about-img-side fade-up">
+      <div class="about-img-grid">
+        <div class="about-img-item"><img src="img/about-1.jpg" alt="Victoria's Secret" onerror="this.style.display='none'"></div>
+        <div class="about-img-item"><img src="img/about-2.jpg" alt="Victoria's Secret" onerror="this.style.display='none'"></div>
+        <div class="about-img-item"><img src="img/about-3.jpg" alt="Victoria's Secret" onerror="this.style.display='none'"></div>
+        <div class="about-img-item"><img src="img/about-4.jpg" alt="Victoria's Secret" onerror="this.style.display='none'"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BANNER -->
+<div class="feature-banner">
+  <div class="fb-deco"></div>
+  <div class="fb-inner">
+    <div class="fb-left">
+      <h2>Pagá como<br><em>más te convenga</em></h2>
+      <p>Elegís el método de pago que mejor se adapte a vos. Sin complicaciones, coordinamos todo por WhatsApp.</p>
+    </div>
+    <div class="fb-cards">
+      <div class="fb-card"><div class="fbc-icon">💳</div><div class="fbc-title">3 cuotas sin interés</div><div class="fbc-sub">Todas las tarjetas</div></div>
+      <div class="fb-card"><div class="fbc-icon">🏦</div><div class="fbc-title">20% OFF</div><div class="fbc-sub">Pagando por transferencia</div></div>
+      <div class="fb-card"><div class="fbc-icon">📦</div><div class="fbc-title">Envío nacional</div><div class="fbc-sub">Toda Argentina</div></div>
+      <div class="fb-card"><div class="fbc-icon">✨</div><div class="fbc-title">100% originales</div><div class="fbc-sub">Productos importados</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <h2 class="fade-up">¿Por qué elegirnos?</h2>
+    <p class="fade-up">Productos originales importados de Victoria's Secret con envío seguro a cualquier punto del país.</p>
+    <div class="trust-row">
+      <div class="trust-pill fade-up"><span>🌸</span> Fragancias 100% originales</div>
+      <div class="trust-pill fade-up" style="transition-delay:.07s"><span>🛡️</span> Compra protegida</div>
+      <div class="trust-pill fade-up" style="transition-delay:.14s"><span>📲</span> Atención por WhatsApp</div>
+      <div class="trust-pill fade-up" style="transition-delay:.21s"><span>🚚</span> Todo el país</div>
+      <div class="trust-pill fade-up" style="transition-delay:.28s"><span>💜</span> Miles de clientas felices</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">VS Glamour</div>
+  <p>Victoria's Secret Argentina · Envío a todo el país<br>Pagos en cuotas · 20% OFF por transferencia · Productos originales importados</p>
+  <p style="margin-top:1.25rem;font-size:.65rem;opacity:.3">© 2025 VS Glamour</p>
+</footer>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h2>Mi carrito</h2><button class="close-btn" onclick="toggleCart()">×</button></div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty"><p>Tu carrito está vacío</p><p>Explorá nuestra colección ✨</p></div>
+  </div>
+  <div class="cart-footer">
+    <span class="pay-label">Método de pago</span>
+    <div class="pay-opts">
+      <button class="pay-opt active" id="payCard" onclick="selectPay('card')">💳 Tarjeta</button>
+      <button class="pay-opt" id="payTransfer" onclick="selectPay('transfer')">🏦 Transferencia · <b style="color:var(--mauve)">−20%</b></button>
+    </div>
+    <div id="cuotasSec">
+      <div class="cuotas-row">
+        <button class="cuota-opt active" id="c1" onclick="selC(1)">1 pago<small>contado</small></button>
+        <button class="cuota-opt" id="c2" onclick="selC(2)">2 cuotas<small>sin interés</small></button>
+        <button class="cuota-opt" id="c3" onclick="selC(3)">3 cuotas<small>sin interés</small></button>
+      </div>
+    </div>
+    <div class="cart-totals">
+      <div class="cart-row"><span>Subtotal</span><span id="subtotalDisplay">$0</span></div>
+      <div class="cart-row disc" id="discRow" style="display:none"><span>Descuento transferencia −20%</span><span id="discDisplay"></span></div>
+      <div class="cart-row" id="cuotaInfo" style="display:none"><span id="cuotaLabel"></span><span id="cuotaVal"></span></div>
+      <div class="cart-row total"><span>Total</span><span id="totalDisplay">$0</span></div>
+    </div>
+    <div class="ship-notice">📦 <b>Envío:</b> te cotizamos el costo por WhatsApp según tu zona.</div>
+    <button class="checkout-btn" onclick="sendWA()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Pedir por WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-gallery" id="modalGallery">
+      <button class="modal-close" onclick="closeModalDirect()">×</button>
+      <div class="modal-main-img" id="modalMainImg"></div>
+      <div class="modal-thumbs" id="modalThumbs"></div>
+    </div>
+    <div class="modal-info" id="modalInfo"></div>
+  </div>
+</div>
+
+<script>
+const WA_NUMBER = '5493517498052';
+
+// ── DATOS ─────────────────────────────────────────────────────────
+const fragancias = [
+  {id:1,name:'Aqua Kiss Vacation',cat:'Body Mist',group:'fragancias',price:8500,desc:'Lotus y Sparkling Pear. Frescura tropical irresistible para el verano.',imgs:['img/aqua-kiss-1.jpg','img/aqua-kiss-2.jpg'],tag:'nuevo',colors:[]},
+  {id:2,name:'Velvet Petals',cat:'Body Mist',group:'fragancias',price:8200,desc:'Pétalos de terciopelo, almendra y sándalo. Sensual y profundamente femenino.',imgs:['img/velvet-petals-mist-1.jpg','img/velvet-petals-mist-2.jpg'],tag:'popular',colors:[]},
+  {id:3,name:'Santal Berry Silk',cat:'Body Mist',group:'fragancias',price:8500,desc:'Sándalo dorado, bayas silvestres y seda. Envolvente y sofisticado.',imgs:['img/santal-berry-1.jpg'],tag:'nuevo',colors:[]},
+  {id:4,name:'Ginger Apple Jewel',cat:'Body Mist',group:'fragancias',price:8200,desc:'Jengibre, manzana fresca y jazmín. Vibrante, alegre e irresistible.',imgs:['img/ginger-apple-1.jpg'],tag:'',colors:[]},
+  {id:5,name:'Bare Vanilla Bliss',cat:'Body Mist',group:'fragancias',price:8500,desc:'Vainilla pura, almendras y musgo suave. Dulce, cálido y completamente adictivo.',imgs:['img/bare-vanilla-1.jpg'],tag:'popular',colors:[]},
+  {id:6,name:'Love Spell Brûlée',cat:'Body Mist',group:'fragancias',price:8200,desc:'Melón, flores de cerezo y toque de caramelo. El clásico reinventado.',imgs:['img/love-spell-1.jpg'],tag:'',colors:[]},
+  {id:7,name:'Wild Neroli',cat:'Body Mist',group:'fragancias',price:8500,desc:'Ámbar ahumado y sal marina. Fresco, libre y magnético.',imgs:['img/wild-neroli-1.jpg'],tag:'nuevo',colors:[]},
+  {id:8,name:'Velvet Petals Lotion',cat:'Crema Corporal',group:'fragancias',price:9500,desc:'Loción hidratante con el inconfundible aroma Velvet Petals. Piel sedosa todo el día.',imgs:['img/velvet-petals-lotion-1.jpg','img/velvet-petals-lotion-2.jpg'],tag:'',colors:[]},
+];
+
+const ropa = [
+  {id:101,name:'Bombacha Cotton Lace',cat:'Bombacha',group:'ropa',price:4800,desc:'Algodón suave con detalle de encaje. Comodidad todo el día sin resignar estilo.',imgs:['img/bombacha-lace-1.jpg'],tag:'nuevo',
+   colors:[{name:'Rosa',hex:'#F4A7B9'},{name:'Negro',hex:'#1a1a1a'},{name:'Blanco',hex:'#F5F5F0'},{name:'Beige',hex:'#E8D5C4'}],
+   sizes:['XS','S','M','L','XL']},
+  {id:102,name:'Tanga Seamless',cat:'Bombacha',group:'ropa',price:4200,desc:'Sin costuras, sin marcas bajo la ropa. Microfibra suave de segunda piel.',imgs:['img/tanga-seamless-1.jpg'],tag:'popular',
+   colors:[{name:'Negro',hex:'#1a1a1a'},{name:'Nude',hex:'#D4A574'},{name:'Rosa',hex:'#F4A7B9'}],
+   sizes:['XS','S','M','L','XL']},
+  {id:103,name:'Bombacha Satin Bow',cat:'Bombacha',group:'ropa',price:5200,desc:'Satén suave con moño decorativo. Delicada y femenina, perfecta para regalo.',imgs:['img/bombacha-satin-1.jpg'],tag:'',
+   colors:[{name:'Rosa Pálido',hex:'#F9D4D4'},{name:'Negro',hex:'#1a1a1a'},{name:'Borgoña',hex:'#722F37'}],
+   sizes:['XS','S','M','L','XL']},
+  {id:104,name:'Bralette Lace Essential',cat:'Corpiño',group:'ropa',price:7800,desc:'Encaje delicado, aros suaves y cierre trasero. Soporte ligero para el día a día.',imgs:['img/bralette-lace-1.jpg'],tag:'nuevo',
+   colors:[{name:'Negro',hex:'#1a1a1a'},{name:'Blanco',hex:'#F5F5F0'},{name:'Rosa',hex:'#F4A7B9'},{name:'Beige',hex:'#E8D5C4'}],
+   sizes:['32A','34A','34B','36B','36C','38C']},
+  {id:105,name:'Bralette Velvet Soft',cat:'Corpiño',group:'ropa',price:8500,desc:'Terciopelo suave sin varillas. Comodidad máxima con un toque de lujo.',imgs:['img/bralette-velvet-1.jpg'],tag:'popular',
+   colors:[{name:'Borgoña',hex:'#722F37'},{name:'Negro',hex:'#1a1a1a'},{name:'Rosa Pálido',hex:'#F9D4D4'}],
+   sizes:['XS','S','M','L']},
+  {id:106,name:'Conjunto Floral Lace',cat:'Corpiño',group:'ropa',price:13500,desc:'Set corpiño + bombacha de encaje floral. La combinación perfecta para cada día.',imgs:['img/conjunto-floral-1.jpg'],tag:'nuevo',
+   colors:[{name:'Negro',hex:'#1a1a1a'},{name:'Rosa',hex:'#F4A7B9'}],
+   sizes:['XS/32A','S/34A','S/34B','M/36B','L/36C']},
+];
+
+const allProducts = [...fragancias, ...ropa];
+
+// ── ESTADO ────────────────────────────────────────────────────────
+let cart = {};
+let payMethod = 'card';
+let cuotas = 1;
+let modalProduct = null;
+let modalSelectedColor = null;
+let modalSelectedSize = null;
+let modalCurrentImg = 0;
+
+// ── UTILIDADES ───────────────────────────────────────────────────
+function fp(n){ return '$' + Math.round(n).toLocaleString('es-AR'); }
+
+function placeholderSVG(id){
+  return `<div class="p-placeholder">
+    <svg width="72" height="110" viewBox="0 0 72 110" fill="none">
+      <rect x="25" y="2" width="22" height="8" rx="3" fill="#C8A0A0" opacity=".5"/>
+      <path d="M10 26C10 20 20 16 36 16C52 16 62 20 62 26L66 96C66 102 54 106 36 106C18 106 6 102 6 96Z" fill="url(#pg${id})"/>
+      <ellipse cx="36" cy="26" rx="26" ry="8" fill="#E8C8C8" opacity=".4"/>
+      <defs><linearGradient id="pg${id}" x1="6" y1="16" x2="66" y2="106" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#EDD0D0"/><stop offset="100%" stop-color="#9A6B6B"/>
+      </linearGradient></defs>
+    </svg>
+    <span>VS</span>
+  </div>`;
+}
+
+function undieplaceholderSVG(id){
+  return `<div class="p-placeholder">
+    <svg width="90" height="70" viewBox="0 0 90 70" fill="none">
+      <path d="M10 10 C10 10 20 5 45 5 C70 5 80 10 80 10 L88 35 C88 35 70 60 45 60 C20 60 2 35 2 35 Z" fill="url(#up${id})" opacity=".6"/>
+      <defs><linearGradient id="up${id}" x1="2" y1="5" x2="88" y2="60" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#F5EAEA"/><stop offset="100%" stop-color="#C8A0A0"/>
+      </linearGradient></defs>
+    </svg>
+    <span>VS</span>
+  </div>`;
+}
+
+// ── RENDER GRID ───────────────────────────────────────────────────
+function renderGrid(products, containerId) {
+  const grid = document.getElementById(containerId);
+  grid.innerHTML = products.map((p, i) => {
+    const tp = fp(p.price * 0.8);
+    const tagHTML = p.tag ? `<div class="product-tag${p.tag==='popular'?' hot':''}">${p.tag==='nuevo'?'Nuevo':'Popular'}</div>` : '';
+    const delay = (i % 4) * 0.07;
+    const isUnderwear = p.group === 'ropa';
+    const phFn = isUnderwear ? undieplaceholderSVG : placeholderSVG;
+    const colorDots = p.colors && p.colors.length
+      ? `<div class="color-dots">${p.colors.slice(0,4).map(c=>`<div class="color-dot" style="background:${c.hex}" title="${c.name}"></div>`).join('')}</div>`
+      : '';
+    return `
+    <div class="product-card fade-up" style="transition-delay:${delay}s" data-group="${p.group}" data-cat="${p.cat}" onclick="openModal(${p.id})">
+      <div class="product-img">
+        ${tagHTML}
+        <img src="${p.imgs[0]}" alt="${p.name}"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          style="width:100%;height:100%;object-fit:cover">
+        <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center">${phFn(p.id)}</div>
+      </div>
+      <div class="product-body">
+        <p class="product-cat">${p.cat}</p>
+        <h3 class="product-name">${p.name}</h3>
+        ${colorDots}
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-footer">
+          <div class="product-price">
+            <small>Precio tarjeta</small>
+            <div class="price-main">${fp(p.price)}</div>
+            <div class="price-transfer">${tp} · transferencia</div>
+          </div>
+          <button class="add-btn" onclick="event.stopPropagation();quickAdd(${p.id})" title="Agregar">+</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  observeFade();
+}
+
+function filterCat(section, cat, btn) {
+  const gridId = section === 'fragancias' ? 'fragGrid' : 'ropaGrid';
+  const tabsId = section === 'fragancias' ? 'fragTabs' : 'ropaTabs';
+  document.querySelectorAll(`#${tabsId} .cat-tab`).forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll(`#${gridId} .product-card`);
+  cards.forEach(card => {
+    const cardCat = card.dataset.cat;
+    if (cat === 'all' || cardCat === cat || cardCat.includes(cat)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────
+function openModal(id) {
+  const p = allProducts.find(x => x.id === id);
+  if (!p) return;
+  modalProduct = p;
+  modalSelectedColor = p.colors && p.colors.length ? p.colors[0] : null;
+  modalSelectedSize = null;
+  modalCurrentImg = 0;
+
+  // Gallery
+  const mainImg = document.getElementById('modalMainImg');
+  const thumbs = document.getElementById('modalThumbs');
+  mainImg.innerHTML = p.imgs[0]
+    ? `<img src="${p.imgs[0]}" alt="${p.name}" id="modalBigImg" style="width:100%;height:100%;object-fit:cover">`
+    : (p.group==='ropa' ? undieplaceholderSVG(p.id+'m') : placeholderSVG(p.id+'m'));
+
+  thumbs.innerHTML = p.imgs.length > 1
+    ? p.imgs.map((img, i) => `<div class="modal-thumb${i===0?' active':''}" onclick="switchModalImg('${img}',${i})"><img src="${img}" alt="" onerror="this.parentElement.style.display='none'"></div>`).join('')
+    : '';
+
+  // Info
+  const tp = fp(p.price * 0.8);
+  const cuotaText = `o 3 cuotas de ${fp(p.price / 3)} sin interés`;
+  const colorHTML = p.colors && p.colors.length
+    ? `<span class="selector-label">Color</span>
+       <div class="color-selector" id="modalColorSel">
+         ${p.colors.map(c => `<div class="color-swatch${c===p.colors[0]?' active':''}" style="background:${c.hex}" title="${c.name}" onclick="selectColor('${c.name}','${c.hex}',this)"></div>`).join('')}
+       </div>
+       <div id="selectedColorName" style="font-size:.72rem;color:var(--muted);margin-bottom:1rem;margin-top:-.5rem">${p.colors[0].name}</div>`
+    : '';
+  const sizeHTML = p.sizes && p.sizes.length
+    ? `<span class="selector-label">Talle</span>
+       <div class="size-selector" id="modalSizeSel">
+         ${p.sizes.map(s => `<button class="size-btn" onclick="selectSize('${s}',this)">${s}</button>`).join('')}
+       </div>`
+    : '';
+
+  // Related
+  const related = allProducts.filter(x => x.id !== p.id && (x.cat === p.cat || x.group === p.group)).slice(0,3);
+  const relatedHTML = related.length
+    ? `<div class="modal-related">
+        <div class="modal-related-title">También te puede gustar</div>
+        <div class="related-grid">
+          ${related.map(r => `
+            <div class="related-card" onclick="openModal(${r.id})">
+              <div class="related-card-img">
+                <img src="${r.imgs[0]}" alt="${r.name}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'">
+              </div>
+              <div class="related-card-name">${r.name}</div>
+            </div>`).join('')}
+        </div>
+      </div>`
+    : '';
+
+  document.getElementById('modalInfo').innerHTML = `
+    <p class="modal-cat">${p.cat}</p>
+    <h2 class="modal-name">${p.name}</h2>
+    <p class="modal-desc">${p.desc}</p>
+    <div class="modal-price-block">
+      <div class="mp-label">Precio</div>
+      <div class="mp-main">${fp(p.price)}</div>
+      <div class="mp-transfer">${tp} pagando con transferencia</div>
+      <div class="mp-cuotas">${cuotaText}</div>
+    </div>
+    ${colorHTML}
+    ${sizeHTML}
+    <button class="modal-add-btn" onclick="addFromModal()">Agregar al carrito</button>
+    ${relatedHTML}
+  `;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function switchModalImg(src, idx) {
+  modalCurrentImg = idx;
+  const big = document.getElementById('modalBigImg');
+  if (big) big.src = src;
+  document.querySelectorAll('.modal-thumb').forEach((t,i) => t.classList.toggle('active', i===idx));
+}
+
+function selectColor(name, hex, el) {
+  modalSelectedColor = {name, hex};
+  document.querySelectorAll('#modalColorSel .color-swatch').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  const label = document.getElementById('selectedColorName');
+  if (label) label.textContent = name;
+}
+
+function selectSize(s, el) {
+  modalSelectedSize = s;
+  document.querySelectorAll('#modalSizeSel .size-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function addFromModal() {
+  if (!modalProduct) return;
+  const p = modalProduct;
+  if (p.sizes && p.sizes.length && !modalSelectedSize) {
+    alert('Por favor seleccioná un talle.');
+    return;
+  }
+  const key = `${p.id}|${modalSelectedColor ? modalSelectedColor.name : ''}|${modalSelectedSize || ''}`;
+  cart[key] = (cart[key] || 0) + 1;
+  updateCartUI();
+  closeModalDirect();
+  if (!document.getElementById('cartSidebar').classList.contains('open')) toggleCart();
+}
+
+function quickAdd(id) {
+  const p = allProducts.find(x => x.id === id);
+  if (!p) return;
+  if ((p.sizes && p.sizes.length) || (p.colors && p.colors.length)) {
+    openModal(id);
+    return;
+  }
+  const key = `${id}||`;
+  cart[key] = (cart[key] || 0) + 1;
+  updateCartUI();
+  if (!document.getElementById('cartSidebar').classList.contains('open')) toggleCart();
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── CARRITO ───────────────────────────────────────────────────────
+function parseKey(key) {
+  const parts = key.split('|');
+  return { id: parseInt(parts[0]), colorName: parts[1] || '', size: parts[2] || '' };
+}
+
+function removeFromCart(key) { delete cart[key]; updateCartUI(); }
+
+function changeQty(key, delta) {
+  cart[key] = (cart[key] || 0) + delta;
+  if (cart[key] <= 0) delete cart[key];
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const items = Object.entries(cart);
+  const totalItems = items.reduce((s, [,q]) => s+q, 0);
+  document.getElementById('cartCount').textContent = totalItems;
+
+  const sub = items.reduce((s, [key, q]) => {
+    const {id} = parseKey(key);
+    return s + allProducts.find(p => p.id === id).price * q;
+  }, 0);
+  const disc = payMethod === 'transfer' ? sub * 0.2 : 0;
+  const total = sub - disc;
+
+  document.getElementById('subtotalDisplay').textContent = fp(sub);
+  document.getElementById('totalDisplay').textContent = fp(total);
+  document.getElementById('discRow').style.display = payMethod === 'transfer' ? 'flex' : 'none';
+  document.getElementById('discDisplay').textContent = '-' + fp(disc);
+
+  const ci = document.getElementById('cuotaInfo');
+  if (payMethod === 'card' && cuotas > 1) {
+    ci.style.display = 'flex';
+    document.getElementById('cuotaLabel').textContent = `${cuotas} cuotas de`;
+    document.getElementById('cuotaVal').textContent = fp(total / cuotas);
+  } else { ci.style.display = 'none'; }
+
+  const container = document.getElementById('cartItems');
+  container.querySelectorAll('.cart-item').forEach(e => e.remove());
+  document.getElementById('cartEmpty').style.display = items.length ? 'none' : 'block';
+
+  items.forEach(([key, qty]) => {
+    const {id, colorName, size} = parseKey(key);
+    const p = allProducts.find(p => p.id === id);
+    const price = payMethod === 'transfer' ? p.price * 0.8 : p.price;
+    const colorObj = p.colors && p.colors.find(c => c.name === colorName);
+    const variantHTML = (colorName || size)
+      ? `<div class="citem-variant">
+          ${colorObj ? `<div class="citem-color-dot" style="background:${colorObj.hex}"></div>` : ''}
+          ${colorName ? `<span>${colorName}</span>` : ''}
+          ${colorName && size ? '·' : ''}
+          ${size ? `<span>Talle ${size}</span>` : ''}
+        </div>`
+      : '';
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    const safeKey = key.replace(/'/g, "\\'");
+    div.innerHTML = `
+      <div class="citem-thumb">
+        <img src="${p.imgs[0]}" alt="${p.name}" onerror="this.style.display='none'">
+      </div>
+      <div class="citem-info">
+        <div class="citem-name">${p.name}</div>
+        <div class="citem-cat">${p.cat}</div>
+        ${variantHTML}
+        <div class="qty-row">
+          <button class="qty-btn" onclick="changeQty('${safeKey}',-1)">−</button>
+          <span style="font-size:.82rem;min-width:20px;text-align:center">${qty}</span>
+          <button class="qty-btn" onclick="changeQty('${safeKey}',1)">+</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.4rem">
+        <button class="remove-item" onclick="removeFromCart('${safeKey}')">×</button>
+        <span class="citem-price">${fp(price * qty)}</span>
+      </div>`;
+    container.appendChild(div);
+  });
+}
+
+function selectPay(method) {
+  payMethod = method;
+  document.getElementById('payCard').classList.toggle('active', method==='card');
+  document.getElementById('payTransfer').classList.toggle('active', method==='transfer');
+  document.getElementById('cuotasSec').style.display = method==='card' ? 'block' : 'none';
+  if (method==='transfer') cuotas = 1;
+  updateCartUI();
+}
+
+function selC(n) {
+  cuotas = n;
+  [1,2,3].forEach(i => document.getElementById('c'+i).classList.toggle('active', i===n));
+  updateCartUI();
+}
+
+function toggleCart() {
+  document.getElementById('cartOverlay').classList.toggle('open');
+  document.getElementById('cartSidebar').classList.toggle('open');
+}
+
+// ── WHATSAPP ──────────────────────────────────────────────────────
+function sendWA() {
+  const items = Object.entries(cart);
+  if (!items.length) { alert('Agregá productos al carrito primero.'); return; }
+
+  let msg = '¡Hola! Quiero hacer el siguiente pedido:\n\n';
+  items.forEach(([key, qty]) => {
+    const {id, colorName, size} = parseKey(key);
+    const p = allProducts.find(p => p.id === id);
+    let line = `• ${p.name} (${p.cat})`;
+    if (colorName) line += ` · Color: ${colorName}`;
+    if (size) line += ` · Talle: ${size}`;
+    line += ` x${qty}\n`;
+    msg += line;
+  });
+
+  const sub = items.reduce((s,[key,q])=>{const{id}=parseKey(key);return s+allProducts.find(p=>p.id===id).price*q;},0);
+  const disc = payMethod==='transfer' ? sub*.2 : 0;
+  const total = sub-disc;
+
+  msg += '\n';
+  if (payMethod==='transfer') {
+    msg += `💳 Pago: Transferencia bancaria\n💸 Descuento 20%: -${fp(disc)}\n`;
+  } else {
+    msg += `💳 Pago: Tarjeta en ${cuotas} cuota${cuotas>1?'s':''}\n`;
+    if (cuotas>1) msg += `📊 Cuotas de: ${fp(total/cuotas)}\n`;
+  }
+  msg += `💰 Total: ${fp(total)}\n\n📦 ¿Me podés cotizar el envío a mi zona?`;
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// ── TICKER ────────────────────────────────────────────────────────
+function buildTicker() {
+  const msgs = [
+    '✨ Productos <b>100% originales</b> importados',
+    '💳 <b>3 cuotas sin interés</b> con todas las tarjetas',
+    '🏦 <b>20% OFF</b> pagando por transferencia',
+    '📦 Envío a <b>toda Argentina</b>',
+    '🌸 Victoria\'s Secret · Fragancias originales',
+    '👙 Nueva colección de <b>ropa interior</b>',
+    '📲 Pedidos por <b>WhatsApp</b> · Atención personalizada',
+  ];
+  const track = document.getElementById('tickerTrack');
+  track.innerHTML = [...msgs, ...msgs].map(m => `<span>${m}</span>`).join('');
+}
+
+// ── SCROLL FADE ───────────────────────────────────────────────────
+function observeFade() {
+  const els = document.querySelectorAll('.fade-up:not(.vis)');
+  if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('vis')); return; }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  els.forEach(e => obs.observe(e));
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+buildTicker();
+renderGrid(fragancias, 'fragGrid');
+renderGrid(ropa, 'ropaGrid');
+observeFade();
+</script>
+</body>
+</html>
